@@ -1,40 +1,42 @@
-var data = prompt('Write your expression');
+var data = prompt('Write your expression. For example "1+2".');
 var arr = data.split('');
-var sight = '';
-var position = '';
-var firstDigit = '';
-var secondDigit = '';
+var sign = '';
+var signPosition = '';
 
-for (i = 0; i < arr.length; i++) {
+for (var i = 0; i < arr.length; i++) {
 	switch (arr[i]) {
 		case '+':
 		case '-':
 		case '/':
 		case '*':
-			sight = arr[i];
-			position = i;
+			sign = arr[i];
+			signPosition = i;
 			break;
 		default:
-			continue;
+			break;
 	}
 }
 
-firstDigit = +data.substring(0,position);
-secondDigit = +data.substring(+position + 1);
+var firstDigit = parseInt(data);
+var secondDigit = +parseInt(data.substring(+signPosition + 1));
 
-switch (sight) {
-	case '+': 
-		alert (firstDigit + secondDigit);
+switch (sign) {
+	case '+':
+		var sum = firstDigit + secondDigit;
+		alert ("The sum is: " + sum);
 		break;
-	case '-': 
-		alert (firstDigit - secondDigit);
+	case '-':
+		var diff = firstDigit - secondDigit;
+		alert ("The difference is: " + diff);
 		break;
-	case '/': 
-		alert (firstDigit / secondDigit);
+	case '/':
+		var div = firstDigit / secondDigit;
+		alert ("The division is: " + div);
 		break;
-	case '*': 
-		alert (firstDigit * secondDigit);
+	case '*':
+		var mult = firstDigit * secondDigit;
+		alert ("The multiplication is: " + mult);
 		break;
-	default: 
+	default:
 		alert ('Write correct expression, please!');
 }
